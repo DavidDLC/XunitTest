@@ -12,6 +12,11 @@ namespace Calculations.Test
         [Fact]
         public void testAdd()
         {
+            //arrange
+
+            //act
+
+            //asserts
             Assert.True(true);
         }
     }
