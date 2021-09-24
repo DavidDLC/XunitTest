@@ -41,5 +41,13 @@ namespace Calculations.Test
             Assert.Equal("fail", exceptionDetails.Message);
         }
 
+        [Fact]
+        public void LoyalCustomerForOrdersG100()
+        {
+            var customer = CustomerFactory.CreateCustomerInstance(102);
+            var loyalCustomer = Assert.IsType<LoyalCustomer>(customer);
+            Assert.Equal(10, loyalCustomer.Discount);
+        }
+
     }
 }
