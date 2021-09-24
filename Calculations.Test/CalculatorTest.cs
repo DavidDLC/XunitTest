@@ -36,24 +36,25 @@ namespace Calculations.Test
         }
 
         [Fact]
+        [Trait("Category", "Fibo")]
         public void FiboDoesNotIncludeZero()
         {
             var cal = new Calculator();
 
             Assert.All(cal.FiboNumbers, n => Assert.NotEqual(0, n)); // collections
-
         }
 
         [Fact]
+        [Trait("Category", "Fibo")]
         public void FiboInclude13()
         {
             var cal = new Calculator();
 
             Assert.Contains(13,cal.FiboNumbers); //collectins
-
         }
 
         [Fact]
+        [Trait("Category","Fibo")]
         public void FiboDoesNotInclude4()
         {
             var cal = new Calculator();

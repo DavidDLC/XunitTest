@@ -16,10 +16,6 @@ namespace Calculations
         {
             return string.IsNullOrEmpty(name) ? throw new ArgumentException("fail") : 100;
         }
-
-       
-
-
     }
 
     public class LoyalCustomer : Customer
