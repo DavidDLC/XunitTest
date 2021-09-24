@@ -1,14 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Calculations.Test
 {
-    public class CalculatorTest
+    public class CalculatorFixture
     {
+        public Calculator calc => new Calculator();
+    }
+    public class CalculatorTest : IClassFixture<CalculatorFixture>
+    {
+        private readonly ITestOutputHelper _testOutputHelper;
+        private readonly CalculatorFixture _calculatorFixture;
+        private readonly MemoryStream memoryStream;
+
+        public CalculatorTest(ITestOutputHelper testOutputHelper, CalculatorFixture calculatorFixture)
+        {
+            _testOutputHelper = testOutputHelper;
+            _calculatorFixture = calculatorFixture;
+            _testOutputHelper.WriteLine("constructor");
+
+            memoryStream = new MemoryStream();
+        }
         [Fact]
         public void Add_givenTwoIntValues()
         {
@@ -19,7 +37,7 @@ namespace Calculations.Test
             var result = cal.Add(1, 1);
 
             //asserts
-            Assert.Equal(2,result);
+            Assert.Equal(2, result);
         }
 
         [Fact]
@@ -32,7 +50,7 @@ namespace Calculations.Test
             var result = cal.AddDouble(1.2, 3.5);
 
             //asserts
-            Assert.Equal(4.7, result,1);
+            Assert.Equal(4.7, result, 1);
         }
 
         [Fact]
@@ -50,11 +68,11 @@ namespace Calculations.Test
         {
             var cal = new Calculator();
 
-            Assert.Contains(13,cal.FiboNumbers); //collectins
+            Assert.Contains(13, cal.FiboNumbers); //collectins
         }
 
         [Fact]
-        [Trait("Category","Fibo")]
+        [Trait("Category", "Fibo")]
         public void FiboDoesNotInclude4()
         {
             var cal = new Calculator();
