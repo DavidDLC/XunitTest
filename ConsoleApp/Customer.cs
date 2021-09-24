@@ -9,6 +9,14 @@ namespace Calculations
     public class Customer
     {
         public string Name => "david";
+
         public int Age => 35;
+
+        public int GetOrdersByName(string name)
+        {
+            return string.IsNullOrEmpty(name) ? throw new ArgumentException("fail") : 100;
+        }
+
+
     }
 }

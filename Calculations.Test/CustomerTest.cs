@@ -25,5 +25,21 @@ namespace Calculations.Test
 
         }
 
+        [Fact]
+        public void GetOrderByNanmeNotNull()
+        {
+            var customer = new Customer();
+            var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GetOrdersByName(null));
+            
+        }
+
+        [Fact]
+        public void GetOrderByNanmeNotNull2()
+        {
+            var customer = new Customer();
+            var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GetOrdersByName(""));
+            Assert.Equal("fail", exceptionDetails.Message);
+        }
+
     }
 }
