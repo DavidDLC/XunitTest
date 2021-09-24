@@ -8,6 +8,8 @@ namespace Calculations
 {
     public class Names
     {
+        public string  NickName { get; set; }
+
         public string MakfullName(string firstName, string lastName)
         {
             return $"{firstName} {lastName}";
