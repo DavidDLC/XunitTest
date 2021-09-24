@@ -44,7 +44,7 @@ namespace Calculations.Test
         public void Add_givenTwoDoubleValues_ReturnsDouble()
         {
             //arrange
-            var cal = new Calculator();
+            var cal = _calculatorFixture.calc;
 
             //act
             var result = cal.AddDouble(1.2, 3.5);
@@ -66,7 +66,7 @@ namespace Calculations.Test
         [Trait("Category", "Fibo")]
         public void FiboInclude13()
         {
-            var cal = new Calculator();
+            var cal = _calculatorFixture.calc;
 
             Assert.Contains(13, cal.FiboNumbers); //collectins
         }
@@ -75,7 +75,7 @@ namespace Calculations.Test
         [Trait("Category", "Fibo")]
         public void FiboDoesNotInclude4()
         {
-            var cal = new Calculator();
+            var cal = _calculatorFixture.calc;
             Assert.DoesNotContain(4, cal.FiboNumbers); //collections
         }
 
@@ -83,7 +83,7 @@ namespace Calculations.Test
         public void CheckCollection()
         {
             var exprectedCollection = new List<int>() { 1, 1, 2, 3, 5, 8, 13 };
-            var cal = new Calculator();
+            var cal = _calculatorFixture.calc;
 
             Assert.Equal(exprectedCollection, cal.FiboNumbers);
 
