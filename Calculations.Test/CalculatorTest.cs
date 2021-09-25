@@ -98,6 +98,32 @@ namespace Calculations.Test
 
         }
 
+        [Fact]
+        public void IsOdd_GivenOddValue_ReturnsTrue()
+        {
+            var cal = new Calculator();
+            var result = cal.IsOdd(1);
+            Assert.True(result);
+
+        }
+
+
+        [Fact]
+        public void IsOdd_GivenEvenValue_ReturnsFalse()
+        {
+            var cal = new Calculator();
+            var result = cal.IsOdd(1);
+            Assert.True(result);
+        }
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(200, false)]
+        public void IsOdd_GivenOddAndEvenValue(int value, bool expected)
+        {
+            var cal = new Calculator();
+            var result = cal.IsOdd(value);
+            Assert.Equal(expected, result);
+        }
         public void Dispose()
         {
             memoryStream.Close();
