@@ -115,6 +115,7 @@ namespace Calculations.Test
             var result = cal.IsOdd(1);
             Assert.True(result);
         }
+
         [Theory]
         [InlineData(1, true)]
         [InlineData(200, false)]
