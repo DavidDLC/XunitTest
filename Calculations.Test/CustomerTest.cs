@@ -7,12 +7,20 @@ using Xunit;
 
 namespace Calculations.Test
 {
+    [Collection("Customer")]
+
     public class CustomerTest
     {
+        private readonly CustomerFixture _customerFixture;
+
+        public CustomerTest(CustomerFixture customerFixture )
+        {
+            _customerFixture = customerFixture;
+        }
         [Fact]
         public void CheckNameNotEmpty()
         {
-            var customer = new Customer();
+            var customer = _customerFixture.cust;
             Assert.NotNull(customer.Name);
             Assert.False(string.IsNullOrEmpty(customer.Name));
 
@@ -20,7 +28,7 @@ namespace Calculations.Test
         [Fact]
         public void CheckLegiForDiscount()
         {
-            var customer = new Customer();
+            var customer = _customerFixture.cust;
             Assert.InRange(customer.Age, 25, 40);
 
         }
@@ -28,7 +36,7 @@ namespace Calculations.Test
         [Fact]
         public void GetOrderByNanmeNotNull()
         {
-            var customer = new Customer();
+            var customer = _customerFixture.cust;
             var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GetOrdersByName(null));
             
         }
@@ -36,7 +44,7 @@ namespace Calculations.Test
         [Fact]
         public void GetOrderByNanmeNotNull2()
         {
-            var customer = new Customer();
+            var customer = _customerFixture.cust;
             var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GetOrdersByName(""));
             Assert.Equal("fail", exceptionDetails.Message);
         }

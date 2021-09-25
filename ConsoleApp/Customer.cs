@@ -16,6 +16,11 @@ namespace Calculations
         {
             return string.IsNullOrEmpty(name) ? throw new ArgumentException("fail") : 100;
         }
+
+        public string GetFullName(string firstname, string lastName)
+        {
+            return $"{firstname} {lastName}";
+        }
     }
 
     public class LoyalCustomer : Customer
