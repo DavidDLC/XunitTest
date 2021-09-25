@@ -13,7 +13,7 @@ namespace Calculations.Test
         public void validate_GivenLongerThan8Chars_ReturnsTrue()
         {
             var testTarget = new DefaultPasswordValidator();
-            var password = MakeString(9);
+            var password = MakeString(9) + "A";
             var validationResult = testTarget.validate(password);
 
             Assert.True(validationResult);
@@ -43,7 +43,7 @@ namespace Calculations.Test
         public void validate_GivenUpperCase_ReturnsTrue()
         {
             var testTarget = new DefaultPasswordValidator();
-            var password = "aSd";
+            var password = MakeString(8) + "A";
             var validationResult = testTarget.validate(password);
 
             Assert.True(validationResult);
