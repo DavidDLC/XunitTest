@@ -143,6 +143,16 @@ namespace Calculations.Test
             Assert.Equal(expected, result);
         }
 
+
+        [Theory]
+        [IsOddOrEvenData]
+        public void IsOdd_GivenOddAndEvenValue_Attributes(int value, bool expected)
+        {
+            var cal = new Calculator();
+            var result = cal.IsOdd(value);
+            Assert.Equal(expected, result);
+        }
+
         public void Dispose()
         {
             memoryStream.Close();
