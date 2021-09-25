@@ -124,6 +124,16 @@ namespace Calculations.Test
             var result = cal.IsOdd(value);
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [MemberData(nameof(TestDataShare.IsOddOrEvenData), MemberType = typeof(TestDataShare))]
+        public void IsOdd_GivenOddAndEvenValue_MemberData(int value, bool expected)
+        {
+            var cal = new Calculator();
+            var result = cal.IsOdd(value);
+            Assert.Equal(expected, result);
+        }
+
         public void Dispose()
         {
             memoryStream.Close();
