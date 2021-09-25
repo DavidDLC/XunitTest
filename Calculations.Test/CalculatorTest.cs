@@ -9,11 +9,16 @@ using Xunit.Abstractions;
 
 namespace Calculations.Test
 {
-    public class CalculatorFixture
+    public class CalculatorFixture : IDisposable
     {
         public Calculator calc => new Calculator();
+
+        public void Dispose()
+        {
+            //clean
+        }
     }
-    public class CalculatorTest : IClassFixture<CalculatorFixture>
+    public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     {
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly CalculatorFixture _calculatorFixture;
@@ -80,13 +85,22 @@ namespace Calculations.Test
         }
 
         [Fact]
+        [Trait("Category", "Fibo")]
         public void CheckCollection()
         {
+            _testOutputHelper.WriteLine("checkFiboNumbers test starting at {0}", DateTime.Now);
             var exprectedCollection = new List<int>() { 1, 1, 2, 3, 5, 8, 13 };
+            _testOutputHelper.WriteLine("creating an instance of calculator class..");
             var cal = _calculatorFixture.calc;
+            _testOutputHelper.WriteLine("Assrting..");
 
             Assert.Equal(exprectedCollection, cal.FiboNumbers);
 
+        }
+
+        public void Dispose()
+        {
+            memoryStream.Close();
         }
     }
 }
